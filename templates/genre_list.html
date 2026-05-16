@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Semua Genre — Animora{% endblock %}
+{% block content %}
+<div class="section-head">
+  <span class="section-title">Semua Genre</span>
+  <span style="font-size:.73rem;color:var(--ink-soft)">{{ genres|length }} genre</span>
+</div>
+{% if genres %}
+<div class="genre-grid">
+  {% for genre in genres %}
+  <a href="/genre/{{ genre.slug }}" class="genre-cell">{{ genre.name }}</a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state"><div class="empty-icon">🏷️</div><div class="empty-title">Data tidak tersedia</div></div>
+{% endif %}
+{% endblock %}

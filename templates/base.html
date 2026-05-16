@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>{% block title %}Animora{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- MASTHEAD (koran jadul) -->
+<div class="site-masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <span class="masthead-date">Anime Sub Indo · Blog &amp; Review</span>
+      <span class="masthead-issue">Est. Since Ages · Free To Read</span>
+    </div>
+    <div class="masthead-logo-wrap">
+      <a href="/" class="logo">Animora</a>
+      <span class="logo-sub">&#x2015;&#x2015; Pusat Anime Sub Indonesia &#x2015;&#x2015;</span>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo-small">Animora</a>
+    <nav class="nav-links">
+      <a href="/" class="nav-link {% if page_name=='home' %}active{% endif %}">Terbaru</a>
+      <a href="/all-anime" class="nav-link {% if page_name=='all' %}active{% endif %}">A-Z Anime</a>
+      <a href="/genre" class="nav-link {% if page_name=='genre' %}active{% endif %}">Genre</a>
+      <a href="/season" class="nav-link {% if page_name=='season' %}active{% endif %}">Musim</a>
+    </nav>
+    <div class="header-search">
+      <form action="/search" method="get" class="search-form">
+        <input type="text" name="q" placeholder="Cari anime…" class="search-input" value="{{ request.args.get('q','') }}"/>
+        <button type="submit" class="search-btn" aria-label="Cari">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </form>
+    </div>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/" class="mobile-nav-link">Terbaru</a>
+    <a href="/all-anime" class="mobile-nav-link">A-Z Anime</a>
+    <a href="/genre" class="mobile-nav-link">Genre</a>
+    <a href="/season" class="mobile-nav-link">Musim</a>
+    <div class="mobile-search-wrap">
+      <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Cari anime…" value="{{ request.args.get('q','') }}"/>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="site-main">
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-logo">Animora</div>
+      <p class="footer-tagline">Pusat Anime Sub Indonesia terlengkap.<br/>Subtitle berkualitas, update cepat, gratis selamanya.</p>
+    </div>
+
+    <!-- Links -->
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">Navigasi</div>
+        <ul>
+          <li><a href="/">Update Terbaru</a></li>
+          <li><a href="/all-anime">A-Z Anime</a></li>
+          <li><a href="/genre">Genre</a></li>
+          <li><a href="/season">Musim</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Genre Populer</div>
+        <ul>
+          <li><a href="/genre/action">Action</a></li>
+          <li><a href="/genre/romance">Romance</a></li>
+          <li><a href="/genre/comedy">Comedy</a></li>
+          <li><a href="/genre/fantasy">Fantasy</a></li>
+          <li><a href="/genre/slice-of-life">Slice of Life</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Informasi</div>
+        <ul>
+          <li><a href="/tentang">Tentang Kami</a></li>
+          <li><a href="/privasi">Kebijakan Privasi</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+          <li><a href="/kontak">Hubungi Kami</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <span>&copy; {{ 2025 }} Animora &mdash; All rights reserved.</span>
+    <span class="footer-sep">&#x2015;</span>
+    <span>Anime Sub Indonesia &middot; Non-Profit &middot; For Fans, By Fans</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Ke atas">&#8593;</button>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% if total_pages > 1 %}
+<nav class="pagination">
+  {% if page > 1 %}
+    <a href="?{{ base_query }}page={{ page - 1 }}" class="pg-btn pg-prev"><i class="fas fa-chevron-left"></i></a>
+  {% else %}
+    <span class="pg-btn pg-prev pg-disabled"><i class="fas fa-chevron-left"></i></span>
+  {% endif %}
+
+  {% set start_p = [1, page - 2] | max %}
+  {% set end_p   = [total_pages, page + 2] | min %}
+
+  {% if start_p > 1 %}
+    <a href="?{{ base_query }}page=1" class="pg-btn">1</a>
+    {% if start_p > 2 %}<span class="pg-ellipsis">…</span>{% endif %}
+  {% endif %}
+
+  {% for p in range(start_p, end_p + 1) %}
+    {% if p == page %}
+      <span class="pg-btn pg-active">{{ p }}</span>
+    {% else %}
+      <a href="?{{ base_query }}page={{ p }}" class="pg-btn">{{ p }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if end_p < total_pages %}
+    {% if end_p < total_pages - 1 %}<span class="pg-ellipsis">…</span>{% endif %}
+    <a href="?{{ base_query }}page={{ total_pages }}" class="pg-btn">{{ total_pages }}</a>
+  {% endif %}
+
+  {% if page < total_pages %}
+    <a href="?{{ base_query }}page={{ page + 1 }}" class="pg-btn pg-next"><i class="fas fa-chevron-right"></i></a>
+  {% else %}
+    <span class="pg-btn pg-next pg-disabled"><i class="fas fa-chevron-right"></i></span>
+  {% endif %}
+</nav>
+{% endif %}

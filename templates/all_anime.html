@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}A-Z Anime — Animora{% endblock %}
+{% block content %}
+<div class="section-head">
+  <span class="section-title">Semua Anime A–Z</span>
+</div>
+{% if anime_list %}
+<div class="alpha-nav">
+  <button class="alpha-btn active" data-letter="all">Semua</button>
+  {% for group in anime_list %}
+  <button class="alpha-btn" data-letter="{{ group.letter }}">{{ group.letter }}</button>
+  {% endfor %}
+</div>
+{% for group in anime_list %}
+<div class="letter-group" data-letter="{{ group.letter }}">
+  <div class="letter-head">{{ group.letter }}</div>
+  <ul class="letter-list">
+    {% for anime in group.animes %}
+    <li><a href="/anime/{{ anime.slug }}">
+      <span>{{ anime.title }}</span>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+{% else %}
+<div class="empty-state"><div class="empty-icon">📂</div><div class="empty-title">Data tidak tersedia</div></div>
+{% endif %}
+{% endblock %}
