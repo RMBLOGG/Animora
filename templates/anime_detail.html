@@ -43,7 +43,7 @@
 {% if detail.download_links %}
 {% for group in detail.download_links %}
 <div class="dl-block">
-  <div class="dl-block-header">{{ group.resolution }}</div>
+  <div class="dl-block-header">{{ group.quality }}</div>
   <div class="dl-block-body">
     {% set row_size = 4 %}
     {% set labels = ['360P','480P','720P','1080P'] %}
@@ -73,14 +73,24 @@
 {% if new_series %}
 <ul class="anime-list">
   {% for anime in new_series %}
-  <li><a href="/anime/{{ anime.slug }}" class="anime-item">
-    <div class="anime-thumb">{% if anime.poster %}<img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>{% endif %}<div class="thumb-ph" {% if anime.poster %}style="display:none"{% endif %}>📺</div></div>
-    <div class="anime-info">
-      <div class="anime-title">{{ anime.title }}</div>
-      <div class="anime-synopsis">Anime sub indo — klik untuk melihat detail dan link download.</div>
-      {% if anime.genres %}<div class="genre-row">{% for g in anime.genres %}<span class="g-tag">{{ g.name }}</span>{% if not loop.last %}<span class="g-sep">,</span>{% endif %}{% endfor %}</div>{% endif %}
-    </div>
-  </a></li>
+  <li>
+    <a href="/anime/{{ anime.slug }}" class="anime-item">
+      <div class="anime-item-top">
+        <div class="anime-thumb">
+          {% if anime.poster %}<img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>{% endif %}
+          <div class="thumb-ph" {% if anime.poster %}style="display:none"{% endif %}>📺</div>
+        </div>
+        <div class="anime-info">
+          <div class="anime-title">{{ anime.title }}</div>
+        </div>
+      </div>
+      {% if anime.genres %}
+      <div class="anime-item-genres">
+        {% for g in anime.genres %}<span class="g-tag">{{ g.name }}</span>{% if not loop.last %}<span class="g-sep">,</span>{% endif %}{% endfor %}
+      </div>
+      {% endif %}
+    </a>
+  </li>
   {% endfor %}
 </ul>
 {% endif %}

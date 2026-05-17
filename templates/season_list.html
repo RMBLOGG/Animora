@@ -10,15 +10,15 @@
   <div class="season-group" style="margin-top:16px">
     <div class="season-group-title">Tipe Khusus</div>
     <div class="season-chips">
-      {% for s in specials %}{% set p = s.slug.split('-') %}<a href="/season/{{ p[0] }}/{{ p[1] if p|length>1 else '0' }}" class="season-chip">{{ s.name }}</a>{% endfor %}
+      {% for s in specials %}<a href="/season/{{ s.slug }}" class="season-chip">{{ s.name }}</a>{% endfor %}
     </div>
   </div>
   {% endif %}
   {% if regulars %}
   <div class="season-group" style="margin-top:20px">
-    <div class="season-group-title">Per Musim & Tahun</div>
+    <div class="season-group-title">Per Musim &amp; Tahun</div>
     <div class="season-chips">
-      {% for s in regulars %}{% set p = s.slug.split('-') %}<a href="/season/{{ p[0] }}/{{ p[1] if p|length>1 else '0' }}" class="season-chip">{{ s.name }}</a>{% endfor %}
+      {% for s in regulars %}<a href="/season/{{ s.slug }}" class="season-chip">{{ s.name }}</a>{% endfor %}
     </div>
   </div>
   {% endif %}

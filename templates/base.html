@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- MASTHEAD (koran jadul) -->
+<!-- MASTHEAD -->
 <div class="site-masthead">
   <div class="masthead-inner">
     <div class="masthead-top">
@@ -35,14 +35,6 @@
       <a href="/genre" class="nav-link {% if page_name=='genre' %}active{% endif %}">Genre</a>
       <a href="/season" class="nav-link {% if page_name=='season' %}active{% endif %}">Musim</a>
     </nav>
-    <div class="header-search">
-      <form action="/search" method="get" class="search-form">
-        <input type="text" name="q" placeholder="Cari anime…" class="search-input" value="{{ request.args.get('q','') }}"/>
-        <button type="submit" class="search-btn" aria-label="Cari">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
-      </form>
-    </div>
     <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav">
@@ -58,6 +50,15 @@
   </div>
 </header>
 
+
+<!-- FULL-WIDTH SEARCH BAR (below nav) -->
+<div class="site-search-bar">
+  <form action="/search" method="get">
+    <input type="text" name="q" class="s-input" placeholder="Cari judul anime…" value="{{ request.args.get('q','') }}"/>
+    <button type="submit" class="s-btn">Cari</button>
+  </form>
+</div>
+
 <main class="site-main">
   <div class="container">
     {% block content %}{% endblock %}
@@ -66,14 +67,10 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-
-    <!-- Brand -->
     <div class="footer-brand">
       <div class="footer-logo">Animora</div>
       <p class="footer-tagline">Pusat Anime Sub Indonesia terlengkap.<br/>Subtitle berkualitas, update cepat, gratis selamanya.</p>
     </div>
-
-    <!-- Links -->
     <div class="footer-cols">
       <div class="footer-col">
         <div class="footer-col-title">Navigasi</div>
@@ -104,12 +101,9 @@
         </ul>
       </div>
     </div>
-
   </div>
-
-  <!-- Bottom bar -->
   <div class="footer-bottom">
-    <span>&copy; {{ 2025 }} Animora &mdash; All rights reserved.</span>
+    <span>&copy; 2025 Animora &mdash; All rights reserved.</span>
     <span class="footer-sep">&#x2015;</span>
     <span>Anime Sub Indonesia &middot; Non-Profit &middot; For Fans, By Fans</span>
   </div>

@@ -2,13 +2,6 @@
 {% block title %}Animora — Update Terbaru{% endblock %}
 {% block content %}
 
-<!-- SEARCH BAR -->
-<form action="/search" method="get" class="search-bar-form" style="margin-left:-16px;margin-right:-16px;margin-bottom:22px;border-left:none;border-right:none;">
-  <input type="text" name="q" class="s-input" placeholder="Cari judul anime…" value="{{ request.args.get('q','') }}"/>
-  <button type="submit" class="s-btn">CARI</button>
-</form>
-
-<!-- SECTION HEADER -->
 <div class="section-head">
   <span class="section-title">Updatan Terbaru</span>
   <a href="/all-anime" class="section-more">Lihat Semua →</a>
@@ -19,35 +12,32 @@
   {% for anime in anime_list %}
   <li>
     <a href="/anime/{{ anime.slug }}" class="anime-item">
-      <div class="anime-thumb">
-        {% if anime.poster %}<img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>{% endif %}
-        <div class="thumb-ph" {% if anime.poster %}style="display:none"{% endif %}>📺</div>
-      </div>
-      <div class="anime-info">
-        <div class="anime-title">{{ anime.title }}</div>
-        <div class="meta-row">
-          <span class="meta-chip">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Posted by Admin
-          </span>
-          <span class="meta-chip">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Released on {{ anime.released or '-' }}
-          </span>
+      <div class="anime-item-top">
+        <div class="anime-thumb">
+          {% if anime.poster %}<img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>{% endif %}
+          <div class="thumb-ph" {% if anime.poster %}style="display:none"{% endif %}>📺</div>
         </div>
-        {% if anime.genres %}
-        <div class="genre-row">
-          <span class="meta-chip" style="margin-right:5px">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-            Genre
-          </span>
-          {% for g in anime.genres %}
-            <a href="/genre/{{ g.slug }}" class="g-tag" onclick="event.stopPropagation()">{{ g.name }}</a>
-            {% if not loop.last %}<span class="g-sep">,</span>{% endif %}
-          {% endfor %}
+        <div class="anime-info">
+          <div class="anime-title">{{ anime.title }}</div>
+          <div class="meta-row">
+            <span class="meta-chip">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Posted by Admin
+            </span>
+          </div>
         </div>
-        {% endif %}
       </div>
+      {% if anime.genres %}
+      <div class="anime-item-genres">
+        <span class="g-label">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:3px"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Genre
+        </span>
+        {% for g in anime.genres %}
+          <a href="/genre/{{ g.slug }}" class="g-tag" onclick="event.stopPropagation()">{{ g.name }}</a>
+          {% if not loop.last %}<span class="g-sep">,</span>{% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
     </a>
   </li>
   {% endfor %}
@@ -60,33 +50,15 @@
 </div>
 {% endif %}
 
-<!-- SECTION MUSIM -->
-{% if seasons %}
-<div class="section-head" style="margin-top:32px">
-  <span class="section-title">Musim Anime</span>
-  <a href="/season" class="section-more">Lihat Semua →</a>
-</div>
-<div class="season-chips" style="padding:12px 0 4px">
-  {% for s in seasons %}
-    {% set p = s.slug.split('-') %}
-    <a href="/season/{{ p[0] }}/{{ p[1] if p|length > 1 else '0' }}" class="season-chip">{{ s.name }}</a>
-  {% endfor %}
-</div>
-{% endif %}
-
-<!-- REKOMENDASI MAZ'E -->
 {% if rekomendasi %}
-<div class="section-head" style="margin-top:28px">
+<div class="section-head" style="margin-top:32px">
   <span class="section-title">Rekomendasi Maz'e</span>
 </div>
 <div class="rekom-grid">
   {% for anime in rekomendasi %}
   <a href="/anime/{{ anime.slug }}" class="rekom-card">
-    {% if anime.poster %}
-      <img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>
-    {% else %}
-      <div class="rekom-card-ph">📺</div>
-    {% endif %}
+    {% if anime.poster %}<img src="{{ anime.poster }}" alt="{{ anime.title }}" loading="lazy"/>
+    {% else %}<div class="rekom-card-ph">📺</div>{% endif %}
     <div class="rekom-title">{{ anime.title }}</div>
   </a>
   {% endfor %}
