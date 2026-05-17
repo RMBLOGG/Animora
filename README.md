@@ -1,6 +1,6 @@
-# Animora Flask Website
+# KusoNime Flask Website
 
-Website anime berbasis Flask yang mengambil data dari API Animora (via Sanka Vollerei).
+Website anime berbasis Flask yang mengambil data dari API Kusonime (via Sanka Vollerei).
 
 ## Fitur
 - Halaman terbaru / home
@@ -29,7 +29,7 @@ http://localhost:5000
 
 ## Struktur Project
 ```
-animora_flask/
+kusonime_flask/
 ├── app.py               # Flask app utama
 ├── requirements.txt
 ├── templates/
@@ -50,4 +50,4 @@ animora_flask/
 ## API Source
 - Base URL: `https://www.sankavollerei.com/anime`
 - Creator: Sanka Vollerei
-- Source: Animora
+- Source: Kusonime
