@@ -252,6 +252,29 @@ img { display: block; max-width: 100%; }
 .empty-title { font-family: var(--ff-head); font-size: 1rem; font-style: italic; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
 .empty-text { font-family: var(--ff-mono); font-size: .8rem; }
 
+/* STREAM PROMO */
+.stream-promo { margin: 20px 0; border: 1px solid var(--rule-dark); background: var(--ink); overflow: hidden; }
+.stream-promo-top { padding: 14px 16px 12px; border-bottom: 1px solid rgba(240,235,224,.1); }
+.stream-promo-badge { font-family: var(--ff-stamp); font-size: .78rem; letter-spacing: .08em; color: var(--paper); text-transform: uppercase; }
+.stream-promo-sub { font-family: var(--ff-mono); font-size: .68rem; color: rgba(240,235,224,.45); margin-top: 5px; line-height: 1.5; }
+.stream-promo-sites { display: flex; align-items: stretch; }
+.stream-site { flex: 1; display: block; padding: 12px 10px; text-align: center; text-decoration: none; transition: background .15s; }
+.stream-site:hover { background: rgba(240,235,224,.08); }
+.stream-site-name { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
+.stream-site-desc { font-family: var(--ff-mono); font-size: .6rem; color: rgba(240,235,224,.4); line-height: 1.4; }
+.stream-site:hover .stream-site-name { color: var(--red); }
+.stream-site-divider { width: 1px; background: rgba(240,235,224,.1); flex-shrink: 0; }
+
+/* DONATE CARD */
+.donate-card { margin: 28px 0 4px; border: 1px solid var(--rule-dark); background: var(--paper); border-left: 4px solid var(--red); }
+.donate-inner { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+.donate-icon { font-size: 1.6rem; flex-shrink: 0; }
+.donate-text { flex: 1; min-width: 0; }
+.donate-title { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.donate-desc { font-family: var(--ff-mono); font-size: .68rem; color: var(--ink-soft); line-height: 1.5; }
+.donate-btn { flex-shrink: 0; background: var(--red); color: var(--paper); font-family: var(--ff-stamp); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; padding: 8px 16px; border: none; cursor: pointer; text-decoration: none; transition: background .15s; white-space: nowrap; }
+.donate-btn:hover { background: var(--red-dark); }
+
 /* SCROLL TOP */
 .scroll-top { position: fixed; bottom: 22px; right: 14px; width: 36px; height: 36px; background: var(--ink); color: var(--paper); border: 1px solid var(--rule-dark); cursor: pointer; font-family: var(--ff-mono); font-size: .9rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s, background .2s; box-shadow: 2px 2px 0 var(--rule-dark); }
 .scroll-top.show { opacity: 1; pointer-events: auto; }
