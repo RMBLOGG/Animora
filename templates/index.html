@@ -2,6 +2,18 @@
 {% block title %}Animora — Update Terbaru{% endblock %}
 {% block content %}
 
+<!-- DONASI -->
+<div class="donate-card">
+  <div class="donate-inner">
+    <div class="donate-icon">☕</div>
+    <div class="donate-text">
+      <div class="donate-title">Dukung Animora</div>
+      <div class="donate-desc">Animora gratis selamanya. Kalau suka, traktir kopi biar server tetap jalan!</div>
+    </div>
+    <a href="https://saweria.co/Dayynime" target="_blank" rel="noopener" class="donate-btn">Donasi</a>
+  </div>
+</div>
+
 <div class="section-head">
   <span class="section-title">Updatan Terbaru</span>
   <a href="/all-anime" class="section-more">Lihat Semua →</a>
@@ -50,8 +62,32 @@
 </div>
 {% endif %}
 
+<!-- PROMO STREAMING -->
+<div class="stream-promo">
+  <div class="stream-promo-top">
+    <span class="stream-promo-badge">📺 Mau Nonton Anime?</span>
+    <p class="stream-promo-sub">Kunjungi website streaming anime buatan kami — gratis, lengkap, subtitle Indonesia.</p>
+  </div>
+  <div class="stream-promo-sites">
+    <a href="https://aniryuid.vercel.app" target="_blank" rel="noopener" class="stream-site">
+      <div class="stream-site-name">Aniryu</div>
+      <div class="stream-site-desc">Ringan · Ada Download</div>
+    </a>
+    <div class="stream-site-divider"></div>
+    <a href="https://dayynime.vercel.app" target="_blank" rel="noopener" class="stream-site">
+      <div class="stream-site-name">Dayynime</div>
+      <div class="stream-site-desc">Lengkap · Update Cepat</div>
+    </a>
+    <div class="stream-site-divider"></div>
+    <a href="https://animeku-id.vercel.app" target="_blank" rel="noopener" class="stream-site">
+      <div class="stream-site-name">Animeku</div>
+      <div class="stream-site-desc">Lengkap · Tampilan Keren</div>
+    </a>
+  </div>
+</div>
+
 {% if rekomendasi %}
-<div class="section-head" style="margin-top:32px">
+<div class="section-head" style="margin-top:28px">
   <span class="section-title">Rekomendasi Maz'e</span>
 </div>
 <div class="rekom-grid">
